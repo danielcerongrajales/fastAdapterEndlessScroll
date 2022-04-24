@@ -1,6 +1,9 @@
 package com.example.fastadapterenelesssscroll
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +23,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var fastItemAdapter: GenericFastItemAdapter
     private lateinit var footerAdapter: GenericItemAdapter
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,15 +62,28 @@ class MainActivity : AppCompatActivity() {
             override fun onLoadMore(currentPage: Int) {
 
                 lifecycleScope.launch(Dispatchers.Main) {
+                    Log.d("tag",fastItemAdapter.itemCount.toString())
+                    if(fastItemAdapter.itemCount<=19){
 
-                    footerAdapter.clear()
-                    footerAdapter.add(ProgressItem())
-                    delay(1000)
-                    fastItemAdapter.add(NEWITEMS)
+                        footerAdapter.clear()
+                        footerAdapter.add(ProgressItem())
+                        delay(1000)
+                        fastItemAdapter.add(NEWITEMS)
+                    }
+                    else{
+                        footerAdapter.clear()
+                        toast("No hay mas items" )
+                    }
+
                 }
 
             }
         })
 
     }
+
+/*call this method to any class*/
+fun Context.toast(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
+
 }
