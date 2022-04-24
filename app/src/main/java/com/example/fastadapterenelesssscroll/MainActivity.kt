@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         fastItemAdapter = FastItemAdapter()
         footerAdapter = items()
 
-        fastItemAdapter.addAdapter(1, footerAdapter)
 
         val simpleItemList: MutableList<SimpleItem> = ArrayList()
         simpleItemList.add(SimpleItem("Yudi", "CoderJava"))
@@ -44,19 +43,17 @@ class MainActivity : AppCompatActivity() {
         simpleItemList.add(SimpleItem("Setiawan", "CoderKotlin"))
         fastItemAdapter.add(simpleItemList)
 
-
-        binding.recyclerView.adapter = fastItemAdapter
-        val NEWITEMS: MutableList<SimpleItem> = ArrayList()
-        NEWITEMS.add(SimpleItem("nuevo Yudi", "CoderJava"))
-        NEWITEMS.add(SimpleItem("nuevo Setiawan", "CoderKotlin"))
-
-
+        fastItemAdapter.addAdapter(1, footerAdapter)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this);
 
 
+        binding.recyclerView.adapter = fastItemAdapter
 
 
+        val NEWITEMS: MutableList<SimpleItem> = ArrayList()
+        NEWITEMS.add(SimpleItem("nuevo Yudi", "CoderJava"))
+        NEWITEMS.add(SimpleItem("nuevo Setiawan", "CoderKotlin"))
 
         binding.recyclerView.addOnScrollListener(object :
             EndlessRecyclerOnScrollListener(footerAdapter) {
