@@ -35,11 +35,17 @@ android {
 }
 
 dependencies {
+    //fastadapter
+    implementation 'com.mikepenz:fastadapter:5.6.0'
+    //fastadapter Sroll
+    implementation "com.mikepenz:fastadapter-extensions-scroll:5.6.0"
     implementation "com.mikepenz:fastadapter-extensions-utils:5.6.0"
+
+    //corrutinas
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
-    implementation "com.mikepenz:fastadapter-extensions-scroll:5.6.0"
-    implementation 'com.mikepenz:fastadapter:5.6.0'
+
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
